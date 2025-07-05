@@ -221,3 +221,35 @@ docker-compose restart php
 ```
 
 Your Magento 2.4.8 instance is now running at http://${MAGENTO_HOST}. Access the admin panel at `http://${MAGENTO_HOST}/admin`.
+
+
+
+###################################################################
+1. docker-compose up -d
+
+2. docker-compose exec php bash -c "composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.8 /var/www/html"
+
+3. docker-compose exec php bash -c "rm -rf /var/www/html/* && composer create-project --ignore-platform-reqs --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.8 /var/www/html"
+
+
+4. docker-compose exec php bash -c "
+  cd /var/www/html && \
+  bin/magento setup:install \
+    --base-url=http://shiv.m3.com \
+    --db-host=db \
+    --db-name=magento \
+    --db-user=magento \
+    --db-password=magento \
+    --admin-firstname=Admin \
+    --admin-lastname=User \
+    --admin-email=admin@shiv.m3.com \
+    --admin-user=admin \
+    --admin-password=Admin123! \
+    --language=en_US \
+    --currency=USD \
+    --timezone=UTC \
+    --use-rewrites=1
+"
+
+
+5. Then follow the remaining permission, compile, deploy and sample-data commands from the README. Let me know if any other extensions pop up!

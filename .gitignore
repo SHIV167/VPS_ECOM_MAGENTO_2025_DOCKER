@@ -1,0 +1,32 @@
+# Magento 2 .gitignore
+
+# Composer
+/vendor/
+/composer.lock
+/auth.json
+
+# Environment
+.env
+
+# Magento generated files
+generated/
+/var/
+/pub/static/*
+!/pub/static/.htaccess
+/pub/media/*
+!/pub/media/.htaccess
+/app/etc/env.php
+/app/etc/config.php
+
+# Build artifacts
+/node_modules/
+npm-debug.log
+
+# IDE and OS files
+/.idea/
+/.vscode/
+*.iml
+.DS_Store
+
+# Docker override
+docker-compose.override.yml
